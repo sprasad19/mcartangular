@@ -1,0 +1,54 @@
+<div class="col-md-6 mx-auto mt-5">
+
+  <div class="card">
+    <div class="card-header display-4 text-center">
+      Post a product for sell
+    </div>
+    <div class="card-body">
+      <div *ngIf="!categories">
+        <h1 class="text-center mt-5">
+          <i class="fas fa-spinner  fa-spin fa-2x "></i>
+        </h1>
+      </div>
+      <div *ngIf="categories">
+        <div class="form-group">
+          <app-message></app-message>
+          <label for="title" class="form-control-label font-weight-normal">Product Title</label>
+          <input id="title" class="form-control" type="text" name="title" [(ngModel)]="product.title">
+
+
+          <div class="form-group">
+            <label for="price" class="form-control-label font-weight-normal">Product Price</label>
+            <input id="price" class="form-control" type="number" name="price" [(ngModel)]="product.price">
+          </div>
+          <div class="form-group">
+            <label class="form-control-label font-weight-normal">Product Category</label>
+            <select class="custom-select" name="categoryId" [(ngModel)]="product.categoryId">
+              <!-- <option value="0">Select a Category</option> -->
+              <option *ngFor="let category of categories" [value]="category._id"> {{ category.name }}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="decscription">Product Description</label>
+            <textarea id="decscription" class="form-control" rows="6" name="description"
+              [(ngModel)]="product.description"></textarea>
+          </div>
+          <div class="custom-file">
+            <label for="imgc" class="custom-file-label">Product Image</label>
+            <input id="imgc" class="custom-file-input" type="file" name="" accept="image/*" name="file"
+              (change)="fileChange($event)">
+          </div>
+
+          <div class="row mt-4">
+            <div class="form-group ml-auto ">
+              <button type="button" class="btn btn-primary mr-3" (click)="postProduct()" [disabled]="btnDisabled"> Post
+                Product </button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>

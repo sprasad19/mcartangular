@@ -1,0 +1,31 @@
+<div class="col-md-4 mx-auto m-5">
+  <div class="card">
+    <div class="card-header text-success text-center">
+      <h2> Login </h2>
+    </div>
+    <div class="card-body">
+      <app-message></app-message>
+      <form>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input id="email" class="form-control" type="email" name="email" [(ngModel)]="email">
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input id="password" class="form-control" type="password" name="password" [(ngModel)]="password">
+
+        </div>
+
+
+        <div class="form-group float-right">
+          <button class="btn btn-primary" (click)="onLogin()" [disabled]="btnDisabled"> Login </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+
+

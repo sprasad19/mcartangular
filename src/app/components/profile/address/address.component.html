@@ -1,0 +1,72 @@
+
+<div class="col-md-4 mx-auto m-5">
+  <div class="card">
+    <div class="card-header text-info   text-center font-weight-normal">
+      <h3> Shipping Address </h3>
+    </div>
+    <div class="card-body">
+      <app-message></app-message>
+      <div *ngIf="!currentAddress">
+        <h1 class="text-center mt-5">
+          <i class="fas fa-spinner fa-spin "></i>
+        </h1>
+      </div>
+      <div *ngIf="currentAddress">
+        <form>
+          <div class="form-group">
+            <label for="addr1" class="lead font-weight-normal">Address1</label>
+            <input id="addr1" class="form-control" type="text" name="addr1" [(ngModel)]="currentAddress.addr1">
+
+          </div>
+          <div class="form-group">
+            <label for="addr2" class="lead font-weight-normal">Address2</label>
+            <input id="addr2" class="form-control" type="text" name="addr2" [(ngModel)]="currentAddress.addr2">
+
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+
+                <label for="v" class="lead font-weight-normal">City</label>
+                <input id="city" class="form-control" type="text" name="city" [(ngModel)]="currentAddress.city">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+
+                <label for="state" class="lead font-weight-normal">State</label>
+                <input id="state" class="form-control" type="text" name="state" [(ngModel)]="currentAddress.state">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+
+                <label for="postalCode" class="lead font-weight-normal">Postal Code</label>
+                <input id="postalCode" class="form-control" type="text" name="postalCode"
+                  [(ngModel)]="currentAddress.postalCode">
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+
+            <label for="country" class="lead font-weight-normal">Country</label>
+            <input id="country" class="form-control" type="text" name="country" [(ngModel)]="currentAddress.country">
+          </div>
+
+
+
+          <div class="form-group ">
+            <button type="button" class="btn btn-danger btn-block font-weight-normal " (click)="onUpdateAddress()"
+              [disabled]="btnDisabled"> Update Address </button>
+          </div>
+
+
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+
+
+</div>

@@ -1,0 +1,75 @@
+<!-- <div class="container-fluid"></div> -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" routerLink="/">
+
+    <img src="../assets/flipkart-logo.png" alt="mykart" id="mykart" height="35px">
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/categories">Catagory</a>
+      </li>
+
+      <div class="input-group  ">
+        <input class="form-control " size="80%" type="search" placeholder="Search " aria-label="Search"
+          [(ngModel)]="searchTerm" (keyup.enter)="search()" >
+        <div class="input-group-append">
+          <span>
+            <button class="btn btn-warning" id="searchBtn" (click)="search()" >
+              <i class="fa fa-search"></i>
+            </button>
+          </span>
+        </div>
+      </div>
+
+    </ul>
+    <ul class="navbar-nav ml-auto mr-5">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" routerLinkActive="active" aria-expanded="false">
+          <i class="fas fa-user mr-1"></i>
+          <span *ngIf="!token">Account</span>
+          <span *ngIf="_data.user">{{ _data.user.name }}</span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" *ngIf="token" routerLink="/profile">
+            <i class="fa fa-user-circle"></i> Profile
+          </a>
+          <a class="dropdown-item" *ngIf="!token" routerLink="/login">
+            <i class="fa fa-key"></i> Login
+          </a>
+          <a class="dropdown-item" *ngIf="token" routerLink="/login" (click)="logout()">
+            <i class="fa fa-lock"></i> Logout
+          </a>
+          <a class="dropdown-item" *ngIf="!token" routerLink="/register">
+            <i class="fas fa-users"></i> Sign Up
+          </a>
+
+
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/cart">
+          <i class="fa fa-cart-plus"></i>
+          <span *ngIf="_data.cartItem" class="badge badge-warning ml-1 mb-2">{{ _data.cartItem }}</span>
+        </a>
+      </li>
+    </ul>
+
+  </div>
+</nav>
+<router-outlet></router-outlet>
+
+
+<footer class="footer bg-dark text-white p-5 mt-5">
+  <div class="container">
+    <p class="lead text-center">
+      Copyright &copy; 2019 mykart
+    </p>
+  </div>
+</footer>

@@ -1,0 +1,76 @@
+<div class="cart">
+  <div class="container-fluid p-5">
+    <app-message></app-message>
+    <h2 *ngIf="!cartItem.length" class="display-3 text-center mt-5">Cart is Empty</h2>
+
+    <div *ngIf="cartItem.length" class="row">
+      <div class="col-md-9">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Product</th>
+              <th>Product Details</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Action</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of cartItem; let i =index; trackBy:trackCartItem">
+              <td>{{  i+1 }}</td>
+              <td>
+                <a routerLink="/product/{{ item._id }}">
+                  <img src="{{item.image}}" alt="{{item.name}}" class="img-fluid img-thumbnail" height="70px"
+                    width="70px">
+                </a>
+              </td>
+              <td>
+                <h5><small class="text-muted">{{item.owner.name}}</small><br>
+                  <small class="text-muted">{{item.category.name}}</small></h5>
+              </td>
+              <td>
+                <h5 class="font-weight-bold text-danger mt-2">{{item.price | currency:'&#8377;'}}</h5>
+              </td>
+              <td>
+                <input type="number" class="form-control" min="1" max="100" [(ngModel)]="quantities[i]">
+              </td>
+
+              <td><button class="btn btn-danger btn-block" (click)="removeProduct(i,item)">Delete</button></td>
+
+            </tr>
+
+            <tr class="bg-muted">
+              <td colspan="2"></td>
+              <td>
+                <h3>Total: </h3>
+              </td>
+              <td>
+                <span class="ml-1 font-weight-bold text-danger">{{ cartTotal | currency:'&#8377;' }}</span>
+              </td>
+              <td>
+                <h3 class="text-center"><span class="ml-1 font-weight-bold text-danger  ">{{ total  }}</span>
+                </h3>
+                </td>
+              <td>
+                  <button class="btn btn-warning btn-block" (click)="checkOut()">Check Out</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-md-3">
+        <div class="card bg-light">
+          <div class="card-body">
+            <h5>
+              Total: <span class="ml-1 font-weight-bold text-danger">{{cartTotal | currency:'&#8377;'}}</span>
+            </h5><br>
+            <button class="btn btn-warning btn-block"  (click)="checkOut()" >Check Out</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,66 @@
+<section class="col-md-7 mx-auto m-5">
+
+  <div class="card">
+
+    <div class="card-body">
+      <div *ngIf="!categories">
+        <h1 class="text-center mt-5">
+          <i class="fas fa-spinner  fa-spin "></i>
+        </h1>
+      </div>
+    </div>
+    <div class="card-body" *ngIf="categories">
+      <app-message></app-message>
+      <h5 class="card-title text-center text-dark">Categories</h5>
+      <div class="list-group">
+        <a *ngFor="let category of categories" class="list-group-item  list-group-item-action"
+          routerLink="/categories/{{ category._id }}">
+          {{ category.name|titlecase }}
+        </a>
+      </div>
+      <div class="row mt-4" *ngIf="_data.user.isSeller">
+
+        <div class="col-md-9">
+            <div class="form-group mt-2 ml-1">
+                <!-- <label for="categories"></label> -->
+                <input id="categories" class="form-control" type="text" name="newCategory" [(ngModel)] ="newCategory" placeholder="New Category Name">
+              </div>
+        </div>
+        <div class="col-md-3">
+            <!-- <button type="button" class="btn btn-outline-danger ml-auto mt-2 mr-3"  data-toggle="modal" data-target="#categorybtn">
+                Add new Category
+              </button> -->
+              <button type="button" class="btn btn-outline-danger ml-auto mt-2 mr-3" (click)="addCategories()" [disabled]="btnDisabled">Add Category</button>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+
+  <!-- Modal -->
+  <!-- <div class="modal fade" id="categorybtn" tabindex="-1" role="dialog" aria-labelledby="categorybtnLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="categorybtnLabel">Create New Category</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="categories">New Category Name</label>
+            <input id="categories" class="form-control" type="text" name="newCategory" [(ngModel)] ="newCategory">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" >Close</button>
+          <button type="button" class="btn btn-primary" (click)="addCategories()" [disabled]="btnDisabled">Add Category</button>
+        </div>
+      </div>
+    </div>
+  </div> -->
+</section>

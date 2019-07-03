@@ -1,0 +1,60 @@
+<div class="col-md-4 mx-auto m-5">
+  <div class="card">
+    <div class="card-header text-info   text-center font-weight-normal">
+      <h3> Account Settings </h3>
+    </div>
+    <div class="card-body">
+      <app-message></app-message>
+      <div *ngIf="!curretSettings">
+        <h1 class="text-center mt-5">
+          <i class="fas fa-spinner fa-spin "></i>
+        </h1>
+      </div>
+      <div *ngIf="curretSettings">
+        <form>
+          <div class="form-group">
+            <label for="name" class="lead font-weight-normal">Name</label>
+            <input id="name" class="form-control" type="text" name="name" [(ngModel)]="curretSettings.name">
+
+          </div>
+          <div class="form-group">
+            <label for="email" class="lead font-weight-normal">Email</label>
+            <input id="email" class="form-control" type="text" name="email" [(ngModel)]="curretSettings.email">
+          </div>
+          <div class="form-group">
+           <label for="isSeller" class="lead font-weight-normal">Is Seller Or Not</label>
+            <span class="form-check">
+              <!-- <label for="isSeller" class="lead font-weight-normal">Is Seller Or Not</label><br> -->
+              <input id="isSeller" class="form-check-input font-weight-normal" type="checkbox" name="isSeller"
+                [(ngModel)]="curretSettings.isSeller">
+              <label for="isSeller" class="form-check-label font-weight-normal">Register as Seller</label>
+            </span>
+          </div>
+          <div class="form-group">
+            <label for="newPassword" class="lead font-weight-normal">New Password</label>
+            <input id="newPassword" class="form-control" type="password" name="newPassword"
+              [(ngModel)]="curretSettings.newPassword">
+          </div>
+          <div class="form-group">
+            <label for="confirmPassword" class="lead font-weight-normal">Confirm Password</label>
+            <input id="confirmPassword" class="form-control" type="password" name="confirmPassword"
+              [(ngModel)]="curretSettings.confirmPassword">
+
+          </div>
+
+
+          <div class="form-group ">
+            <button type="button" class="btn btn-danger btn-block font-weight-normal " (click)="onUpdate()" [disabled]="btnDisabled"> Update
+              Profile </button>
+          </div>
+
+
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+
+
+</div>
